@@ -23,6 +23,12 @@ public class EnemyManager : MonoBehaviour
 
         int spawnPointIndex = Random.Range (0, spawnPoints.Length);
 
-        Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+		if (!enemy.CompareTag ("Hellephant")) {
+			Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+		}
+
+		if(enemy.CompareTag("Hellephant") && GameObject.FindGameObjectsWithTag("Hellephant").Length == 0){
+        	Instantiate (enemy, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+		}
     }
 }
